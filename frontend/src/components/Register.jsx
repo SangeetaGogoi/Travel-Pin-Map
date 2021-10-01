@@ -1,10 +1,10 @@
 import "./register.css"
-import { Room } from "@material-ui/icons";
+import { Cancel, Room } from "@material-ui/icons";
 import { useRef, useState } from "react";
 import axios from "axios";
 
 
-export default function Register() {
+export default function Register({ setShowRegister }) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const nameRef = useRef();
@@ -21,10 +21,10 @@ export default function Register() {
 
     try {
       await axios.post("/users/register", newUser);
-      setError(false)
-      setSuccess(true)
+      setError(false);
+      setSuccess(true);
     } catch (err) {
-      setError(true)
+      setError(true);
     }
   };
 
@@ -42,8 +42,9 @@ export default function Register() {
         {success && (
           <span className="success">Successfull.You can login now!</span>
         )}
-        {error && <span className="fail">Something went wrong!</span>}
+        {error && <span className="failure">Something went wrong!</span>}
       </form>
+      <Cancel className="registerCancel" onClick={() => setShowRegister(false)} />
     </div>
   )
 }
