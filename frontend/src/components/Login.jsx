@@ -31,11 +31,11 @@ export default function Login({ setShowLogin, myStorage, setCurrentUser }) {
     <div className="loginContainer">
       <div className="logo">
         <Room />
-        SangPin
+        Travel Pin
       </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="username" ref={nameRef} />
-        <input type="password" placeholder="password" ref={passwordRef} />
+        <input type="text" placeholder="username" ref={nameRef} required/>
+        <input type="password" placeholder="password" ref={passwordRef} required/>
         <button className="loginBtn">Login</button>
         {error && <span className="failure">Something went wrong!</span>}
       </form>

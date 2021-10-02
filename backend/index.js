@@ -4,10 +4,11 @@ const dotenv = require("dotenv");
 const app = express();
 const userRoute = require("./routes/users")
 const pinRoute = require("./routes/pins")
-
+const cors = require('cors');
 
 dotenv.config();
 
+app.use(cors())
 app.use(express.json())
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
